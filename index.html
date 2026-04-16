@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Good Morning 🦅</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky: #e8f4fb;
+  --sky-deep: #c8e2f5;
+  --cream: #c8e8f8;
+  --warm-white: #ffffff;
+  --blue: #3d82b0;
+  --blue-light: #82b8d8;
+  --blue-dark: #1e5278;
+  --blue-mid: #2d6e9e;
+  --blush: #e8a0a0;
+  --blush-light: #f5d4cc;
+  --gold: #c9955c;
+  --gold-light: #e8ceaa;
+  --gold-dark: #a07040;
+  --river: #2d7aaa;
+  --river-light: #7ab8d8;
+  --brown: #1e4a6e;
+  --text: #0d1f30;
+  --text-light: #3d6080;
+  --shadow: rgba(20,50,90,0.09);
+}
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html, body {
+  background-color: #c9e8f8;
+  font-family:'Lora',Georgia,serif;
+  color: #0d1f30;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+.page { max-width:480px; margin:0 auto; padding:0 0 60px; }
+
+/* HEADER */
+.header {
+  background: #2a6496 url('lake.jpg') center center / cover no-repeat;
+  text-align:center;
+  padding: 36px 20px 28px;
+  position: relative;
+}
+.header::after {
+  content:'';
+  position:absolute; inset:0;
+  background: rgba(20,55,90,0.45);
+  pointer-events:none;
+}
+.header-inner {
+  position: relative;
+  z-index: 1;
+}
+.eagle-hero { font-size:2.8rem; display:block; margin:0 auto 8px; animation:soar 6s ease-in-out infinite; }
+@keyframes soar {
+  0%,100% { transform:translateX(-7px) translateY(0) rotate(-2deg); }
+  50% { transform:translateX(7px) translateY(-6px) rotate(2deg); }
+}
+.header h1 { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:600; color:#fff; line-height:1.25; text-shadow:0 2px 10px rgba(0,0,0,.5); }
+.header .subtitle { font-style:italic; color:rgba(255,255,255,.85); font-size:.88rem; margin-top:5px; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+.header .dateline { color:rgba(255,255,255,.65); font-size:.72rem; margin-top:5px; letter-spacing:1px; text-transform:uppercase; }
+
+/* DIVIDERS */
+.divider {
+  display:flex; align-items:center; gap:10px;
+  padding:8px 16px 2px; color:var(--brown);
+}
+.divider span {
+  font-family:'Playfair Display',serif; font-size:.76rem;
+  font-weight:600; text-transform:uppercase; letter-spacing:2px; opacity:.7; white-space:nowrap;
+}
+.divider::before,.divider::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(to right,transparent,var(--sky-deep),transparent);
+}
+
+/* CARD */
+.card {
+  background:var(--warm-white); border-radius:16px; padding:16px;
+  margin:0 12px 14px;
+  box-shadow:0 2px 14px var(--shadow);
+  border:1px solid rgba(45,110,158,.15);
+  animation:fadeUp .4s ease both;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.card-title {
+  font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:600;
+  color:var(--blue-dark); margin-bottom:10px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.card-title-left { display:flex; align-items:center; gap:7px; }
+.refresh-btn {
+  background:none; border:1px solid var(--river-light);
+  font-size:.7rem; color:var(--river); cursor:pointer;
+  font-family:'Lora',serif; padding:3px 9px; border-radius:20px; transition:all .2s;
+}
+.refresh-btn:hover { background:var(--sky); }
+
+/* WEATHER */
+.weather-main { display:flex; align-items:center; gap:14px; margin-bottom:10px; }
+.weather-icon { font-size:2.8rem; flex-shrink:0; }
+.weather-temp { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:600; color:var(--brown); }
+.weather-desc { color:var(--text-light); font-style:italic; font-size:.84rem; margin-top:2px; }
+.weather-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:8px; }
+.weather-pill { background:var(--sky); border-radius:9px; padding:6px 10px; font-size:.76rem; color:var(--text-light); display:flex; align-items:center; gap:4px; }
+.weather-tip { margin-top:8px; padding:8px 12px; background:linear-gradient(to right,#e8f4fc,var(--sky-deep)); border-radius:10px; font-size:.78rem; color:var(--blue-dark); border-left:3px solid var(--blue); }
+
+/* NEWS */
+.news-item { padding:9px 0; border-bottom:1px solid var(--sky-deep); }
+.news-item:last-child { border-bottom:none; }
+.news-title { font-size:.87rem; font-weight:500; line-height:1.4; margin-bottom:3px; color:var(--text); }
+.news-meta { font-size:.72rem; color:var(--text-light); font-style:italic; }
+.news-section-label { font-size:.66rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--blue); font-weight:600; margin:10px 0 4px; }
+.news-section-label:first-child { margin-top:0; }
+
+/* GAME CARDS */
+.game-card { border-radius:13px; padding:12px 14px; margin-bottom:10px; }
+.game-card.womens { background:linear-gradient(135deg,#f5c800,#e8b000); }
+.game-card.mens   { background:linear-gradient(135deg,#1a3a6b,#2a5aaa); }
+.game-label { font-size:.63rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:3px; }
+.game-card.womens .game-label { color:rgba(0,0,0,.5); }
+.game-card.mens   .game-label { color:rgba(255,255,255,.55); }
+.game-teams { font-family:'Playfair Display',serif; font-size:.98rem; font-weight:600; margin-bottom:3px; }
+.game-card.womens .game-teams { color:#1a1200; }
+.game-card.mens   .game-teams { color:#fff; }
+.game-details { font-size:.76rem; display:flex; gap:10px; flex-wrap:wrap; }
+.game-card.womens .game-details { color:rgba(0,0,0,.6); }
+.game-card.mens   .game-details { color:rgba(255,255,255,.7); }
+.game-watch { display:inline-block; margin-top:6px; border-radius:20px; padding:3px 10px; font-size:.72rem; font-weight:500; }
+.game-card.womens .game-watch { background:rgba(0,0,0,.12); color:#1a1200; }
+.game-card.mens   .game-watch { background:rgba(255,255,255,.15); color:#fff; }
+
+/* EAGLE LINKS */
+.eagle-link {
+  display:flex; align-items:center; gap:11px;
+  background:linear-gradient(135deg,#1a3a50,#2d5a78);
+  border-radius:13px; padding:12px 14px; margin-bottom:9px;
+  text-decoration:none;
+  box-shadow:0 3px 12px rgba(26,58,80,.28);
+  transition:transform .2s, box-shadow .2s;
+}
+.eagle-link:hover { transform:translateY(-2px); box-shadow:0 5px 18px rgba(26,58,80,.38); }
+.eagle-link-icon { font-size:2rem; flex-shrink:0; }
+.eagle-link-title { font-family:'Playfair Display',serif; font-size:.92rem; color:#fff; font-weight:600; }
+.eagle-link-sub { font-size:.72rem; color:rgba(255,255,255,.6); margin-top:1px; }
+.eagle-link-arrow { margin-left:auto; color:rgba(255,255,255,.4); font-size:.9rem; }
+.eagle-note { text-align:center; font-size:.74rem; color:var(--text-light); font-style:italic; margin-top:4px; }
+
+/* WALK TRACKER — vertical rows, no overflow */
+.walk-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.walk-ring { width:62px; height:62px; flex-shrink:0; position:relative; }
+.walk-ring svg { transform:rotate(-90deg); }
+.ring-bg   { fill:none; stroke:var(--sky-deep); stroke-width:6; }
+.ring-fill { fill:none; stroke:var(--blue); stroke-width:6; stroke-linecap:round; stroke-dasharray:170; stroke-dashoffset:170; transition:stroke-dashoffset .8s ease; }
+.ring-inner { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--blue-dark); }
+.walk-summary { flex:1; }
+.walk-headline { font-family:'Playfair Display',serif; font-size:.98rem; color:var(--blue-dark); }
+.walk-sub { font-size:.76rem; color:var(--text-light); font-style:italic; margin-top:2px; }
+
+.walk-rows { display:flex; flex-direction:column; gap:6px; }
+.walk-row {
+  display:grid;
+  grid-template-columns:36px 1fr 68px;
+  align-items:center; gap:8px;
+  background:var(--warm-white); border-radius:11px;
+  padding:7px 10px;
+  border:2px solid var(--sky-deep);
+  transition:all .2s;
+}
+.walk-row.walked  { background:linear-gradient(to right,#daeef8,#eef6fc); border-color:var(--blue); }
+.walk-row.is-today { border-color:var(--blue-dark); }
+.walk-check {
+  width:32px; height:32px; border-radius:50%;
+  border:2px solid var(--sky-deep); background:var(--warm-white);
+  font-size:1.1rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s; flex-shrink:0;
+}
+.walk-row.walked .walk-check { border-color:var(--blue-dark); background:var(--blue); }
+.walk-day-name { font-size:.82rem; font-weight:500; line-height:1.2; color:var(--text); }
+.today-tag { display:block; font-size:.62rem; color:var(--blue-dark); opacity:.8; }
+.dur-wrap { display:flex; align-items:center; gap:3px; justify-content:flex-end; }
+.dur-input {
+  width:46px; border:1.5px solid var(--sky-deep); border-radius:8px;
+  padding:5px 4px; font-family:'Lora',serif; font-size:.76rem;
+  color:var(--text); background:var(--warm-white);
+  text-align:center; outline:none; transition:border-color .2s;
+}
+.dur-input:focus { border-color:var(--blue); }
+.dur-unit { font-size:.64rem; color:var(--text-light); }
+.walk-week-note { font-size:.73rem; color:var(--text-light); font-style:italic; text-align:center; margin-top:8px; }
+
+/* MOOD */
+.mood-row { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:12px; }
+.mood-btn {
+  border-radius:11px; border:2px solid var(--sky-deep); background:var(--warm-white);
+  font-size:1.45rem; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:7px 2px 5px; transition:all .2s; gap:1px;
+}
+.mood-btn .mood-lbl { font-size:.5rem; color:var(--text-light); font-family:'Lora',serif; }
+.mood-btn.selected { border-color:var(--blue); background:var(--sky); transform:scale(1.07); }
+
+/* SLEEP */
+.sleep-wrap { display:flex; align-items:center; gap:10px; margin:7px 0 13px; }
+input[type=range].sleep-slider {
+  flex:1; -webkit-appearance:none; height:5px; border-radius:3px; outline:none;
+  background:linear-gradient(to right,var(--blue) 0%,var(--blue) var(--pct,50%),var(--sky-deep) var(--pct,50%));
+}
+input[type=range].sleep-slider::-webkit-slider-thumb {
+  -webkit-appearance:none; width:22px; height:22px; border-radius:50%;
+  background:var(--blue); cursor:pointer; box-shadow:0 2px 8px rgba(45,110,158,.4);
+}
+.sleep-val { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--blue-dark); font-weight:600; min-width:30px; text-align:right; }
+
+textarea.jnote {
+  width:100%; border:2px solid var(--sky-deep); border-radius:11px;
+  padding:9px 12px; font-family:'Lora',serif; font-size:.86rem;
+  color:var(--text); background:var(--warm-white); resize:none; outline:none;
+  transition:border-color .2s; line-height:1.6; margin-bottom:9px;
+}
+textarea.jnote:focus { border-color:var(--blue); }
+
+/* BUTTONS */
+.btn {
+  display:inline-flex; align-items:center; gap:7px;
+  padding:10px 20px; border-radius:50px; border:none;
+  font-family:'Lora',serif; font-size:.87rem; cursor:pointer;
+  transition:all .22s; font-weight:500;
+}
+.btn-sage  { background:linear-gradient(135deg,var(--blue-dark),var(--blue-mid)); color:#fff; box-shadow:0 3px 12px rgba(30,82,120,.3); }
+.btn-sage:hover  { transform:translateY(-2px); box-shadow:0 5px 18px rgba(30,82,120,.4); }
+.btn-sage:disabled { opacity:.6; transform:none; cursor:default; }
+.btn-blush { background:linear-gradient(135deg,var(--blue-mid),var(--blue)); color:#fff; box-shadow:0 3px 12px rgba(45,110,158,.3); }
+.btn-full  { width:100%; justify-content:center; }
+.save-row  { display:flex; justify-content:flex-end; margin-top:8px; }
+
+/* PAST ENTRIES */
+.entry-item { background:var(--cream); border-radius:10px; padding:8px 11px; margin-bottom:6px; font-size:.81rem; border-left:3px solid var(--blush); }
+.entry-date { font-size:.68rem; color:var(--text-light); margin-bottom:2px; }
+
+/* TAGS */
+.tag { display:inline-block; border-radius:20px; padding:2px 8px; font-size:.68rem; font-weight:500; margin:2px; }
+.t-sage  { background:var(--sky); color:var(--blue-dark); }
+.t-gold  { background:var(--sky-deep); color:var(--blue-dark); }
+.t-river { background:var(--sky-deep); color:var(--blue-dark); }
+.t-blush { background:var(--blush-light); color:#8a3030; }
+
+/* BOOKS */
+.book-item { display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--sky-deep); align-items:flex-start; }
+.book-item:last-child { border-bottom:none; }
+
+/* EVENTS */
+.event-item { padding:9px 0; border-bottom:1px solid var(--sky-deep); }
+.event-item:last-child { border-bottom:none; }
+.event-title { font-size:.87rem; font-weight:500; margin-bottom:3px; line-height:1.35; color:var(--text); }
+.event-meta  { font-size:.72rem; color:var(--text-light); }
+
+/* AI INSIGHTS */
+.insights-box {
+  background:linear-gradient(135deg,var(--sky),var(--sky-deep));
+  border-radius:13px; padding:15px; margin-top:12px;
+  font-size:.87rem; line-height:1.7; color:var(--text);
+  border-left:4px solid var(--blue);
+}
+.insights-box.loading { font-style:italic; color:var(--text-light); }
+.insight-section { margin-bottom:11px; }
+.insight-section:last-child { margin-bottom:0; }
+.insight-lbl { font-size:.65rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--blue-dark); font-weight:600; margin-bottom:3px; }
+
+/* CONFETTI */
+#confetti-canvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; }
+
+/* TOAST */
+.toast {
+  position:fixed; bottom:22px; left:50%;
+  transform:translateX(-50%) translateY(14px);
+  background:var(--blue-dark); color:#fff;
+  padding:9px 20px; border-radius:50px;
+  font-family:'Lora',serif; font-size:.82rem;
+  opacity:0; transition:all .3s; z-index:1000;
+  white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,.2);
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+.loading-text { color:var(--text-light); font-style:italic; font-size:.83rem; padding:5px 0; }
+.eagle-accent { text-align:center; font-size:1.1rem; letter-spacing:8px; opacity:.55; padding:8px 0 2px; user-select:none; }
+
+/* FOOTER */
+.footer {
+  text-align:center;
+  padding:28px 20px 36px;
+  margin-top:8px;
+}
+.footer-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:600;
+  color:var(--blue-dark);
+  margin-bottom:6px;
+}
+.footer-silly {
+  font-size:.78rem;
+  color:var(--text-light);
+  font-style:italic;
+  line-height:1.55;
+}
+</style>
+</head>
+<body style="background-color:#c9e8f8 !important; background:#c9e8f8 !important;">
+<canvas id="confetti-canvas"></canvas>
+<div class="toast" id="toast"></div>
+<div class="page" style="background-color:#c9e8f8;">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <span class="eagle-hero">🦅</span>
+    <h1>Your corner of the internet</h1>
+    <div class="subtitle">made with 💙 by Julia</div>
+    <div class="dateline" id="header-date"></div>
+  </div>
+</div>
+
+<!-- WEATHER -->
+<div class="divider"><span>🌤 Bettendorf, Iowa Weather</span><button class="refresh-btn" onclick="loadWeather()" style="margin-left:6px;">↻</button></div>
+<div class="card">
+  <div id="weather-content"><div class="loading-text">Loading weather...</div></div>
+</div>
+
+<!-- LOCAL NEWS + EVENTS (combined) -->
+<div class="divider"><span>📰 News &amp; Local Happenings</span></div>
+<div class="card">
+  <div class="card-title">
+    <div class="card-title-left">📰 What's Going On</div>
+    <button class="refresh-btn" onclick="loadNewsAndEvents()">↻ refresh</button>
+  </div>
+  <div id="news-events-content"><div class="loading-text">Loading news &amp; events...</div></div>
+</div>
+
+<!-- HAWKEYES GAMES -->
+<div class="divider"><span>🦅 Iowa Hawkeyes</span></div>
+<div class="card">
+  <div class="card-title">
+    <div class="card-title-left">🏀🏈 Upcoming Games</div>
+    <button class="refresh-btn" onclick="loadGames()">↻ refresh</button>
+  </div>
+  <div id="games-content"><div class="loading-text">Loading schedule...</div></div>
+</div>
+
+<div class="eagle-accent">🦅 · · · 🦅 · · · 🦅</div>
+
+<!-- WALKING TRACKER -->
+<div class="divider"><span>🚶 Weekly Walking</span></div>
+<div class="card">
+  <div class="card-title"><div class="card-title-left">🦋 This Week's Walks</div></div>
+  <div class="walk-header">
+    <div class="walk-ring">
+      <svg viewBox="0 0 62 62" width="62" height="62">
+        <circle class="ring-bg" cx="31" cy="31" r="27"/>
+        <circle class="ring-fill" id="walk-ring" cx="31" cy="31" r="27"/>
+      </svg>
+      <div class="ring-inner" id="walk-ring-label">0/4</div>
+    </div>
+    <div class="walk-summary">
+      <div class="walk-headline" id="walk-headline">Let's go for a walk! 🌿</div>
+      <div class="walk-sub">Goal: 4 walks this week</div>
+      <div class="walk-sub" id="walk-remain"></div>
+    </div>
+  </div>
+  <div class="walk-rows" id="walk-rows"></div>
+  <div class="walk-week-note" id="walk-note"></div>
+</div>
+
+<!-- DAILY CHECK-IN -->
+<div class="divider"><span>💛 Daily Check-In</span></div>
+<div class="card">
+  <div class="card-title"><div class="card-title-left">💛 How Are You Today?</div></div>
+
+  <div style="font-size:.82rem;color:var(--text-light);margin-bottom:6px;">How are you feeling?</div>
+  <div class="mood-row" id="mood-grid"></div>
+
+  <div style="font-size:.82rem;color:var(--text-light);margin-bottom:5px;">Hours slept last night</div>
+  <div class="sleep-wrap">
+    <span style="font-size:1.05rem;">🌙</span>
+    <input type="range" class="sleep-slider" id="sleep-slider" min="2" max="12" step="0.5" value="7" oninput="updateSleep(this)">
+    <div class="sleep-val" id="sleep-val">7h</div>
+  </div>
+
+  <div style="font-size:.82rem;color:var(--text-light);margin-bottom:5px;">A little note (optional)</div>
+  <textarea class="jnote" id="jnote" rows="2" placeholder="What's on your heart today?"></textarea>
+
+  <div class="save-row">
+    <button class="btn btn-sage" onclick="saveEntry()">💙 Save Today</button>
+  </div>
+</div>
+
+<div class="eagle-accent">🦅 · · · 🦅 · · · 🦅</div>
+
+<!-- AI INSIGHTS -->
+<div class="divider"><span>🤖 Weekly Insights</span></div>
+<div class="card">
+  <div class="card-title"><div class="card-title-left">🦅 How Am I Doing?</div></div>
+  <p style="font-size:.82rem;color:var(--text-light);line-height:1.55;margin-bottom:12px;">
+    Tap below and I'll look at your walks, sleep, and mood to find patterns and share gentle tips to help you feel your best!
+  </p>
+  <button class="btn btn-sage btn-full" onclick="getInsights()" id="insights-btn">🦅 Show My Weekly Insights</button>
+  <div class="insights-box loading" id="insights-box" style="display:none;"></div>
+</div>
+
+<!-- EAGLE NEST CAMS -->
+<div class="divider"><span>🦅 Eagle Watching</span></div>
+<div class="card">
+  <div class="card-title"><div class="card-title-left">🦅 Live Eagle Nest Cams</div></div>
+  <a class="eagle-link" href="https://www.raptorresource.org/bald-eagle-cam/" target="_blank">
+    <div class="eagle-link-icon">🦅</div>
+    <div><div class="eagle-link-title">Decorah Eagles — Live Nest Cam</div><div class="eagle-link-sub">Raptor Resource Project · Decorah, Iowa</div></div>
+    <span class="eagle-link-arrow">→</span>
+  </a>
+  <a class="eagle-link" href="https://www.youtube.com/@RaptorResourceProject/streams" target="_blank">
+    <div class="eagle-link-icon">▶️</div>
+    <div><div class="eagle-link-title">Raptor Resource YouTube</div><div class="eagle-link-sub">Livestreams · Highlights · Archives</div></div>
+    <span class="eagle-link-arrow">→</span>
+  </a>
+  <a class="eagle-link" href="https://www.eagles.org/live-eagle-cam/" target="_blank">
+    <div class="eagle-link-icon">🌲</div>
+    <div><div class="eagle-link-title">American Eagle Foundation Cam</div><div class="eagle-link-sub">Tennessee nest — year-round viewing</div></div>
+    <span class="eagle-link-arrow">→</span>
+  </a>
+  <a class="eagle-link" href="https://www.mississippirivereagles.com" target="_blank">
+    <div class="eagle-link-icon">🌊</div>
+    <div><div class="eagle-link-title">Mississippi River Eagle Watch</div><div class="eagle-link-sub">Eagles near the Quad Cities — local sightings</div></div>
+    <span class="eagle-link-arrow">→</span>
+  </a>
+  <div class="eagle-note">🦅 Bald eagles winter along the Mississippi near Bettendorf — keep your eyes open on walks!</div>
+</div>
+
+<!-- BOOKS — bottom -->
+<div class="divider"><span>📚 New Books</span></div>
+<div class="card">
+  <div class="card-title">
+    <div class="card-title-left">📖 Baldacci &amp; Friends</div>
+    <button class="refresh-btn" onclick="loadBooks()">↻ refresh</button>
+  </div>
+  <div id="books-content"><div class="loading-text">Searching for new releases...</div></div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-title">🦅 Thelma's Internet 🦅</div>
+  <div class="footer-silly">Handcrafted with love (and a suspicious amount of coffee) by Julia.<br>No eagles were harmed in the making of this website.<br>If you can read this, you've successfully used the internet. Congratulations! 🎉</div>
+</div>
+
+<script>
+// STATE
+function getState(){try{return JSON.parse(localStorage.getItem('gma2')||'{}')}catch(e){return{}}}
+function setState(obj){const s=getState();localStorage.setItem('gma2',JSON.stringify({...s,...obj}))}
+
+// DATE UTILS
+function todayKey(){return new Date().toISOString().slice(0,10)}
+function getWeekDays(){
+  const d=new Date(),day=d.getDay(),diff=d.getDate()-day+(day===0?-6:1);
+  return Array.from({length:7},(_,i)=>{const dd=new Date(d);dd.setDate(diff+i);return dd.toISOString().slice(0,10)});
+}
+const DAY_FULL=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+function initDate(){
+  document.getElementById('header-date').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+}
+
+// TOAST
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+
+// BUTTERFLIES
+function launchButterflies(){
+  const c=document.getElementById('confetti-canvas'),ctx=c.getContext('2d');
+  c.width=window.innerWidth;c.height=window.innerHeight;
+  const em=['🦋','🦅','🌸','✨','🌿','💛','🪶'];
+  const ps=Array.from({length:22},()=>({x:Math.random()*c.width,y:c.height+20,e:em[Math.floor(Math.random()*em.length)],sp:2+Math.random()*3.5,wo:Math.random()*Math.PI*2,ws:0.04+Math.random()*0.06,sz:17+Math.random()*15,op:1}));
+  let fr=0;
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);let alive=false;
+    ps.forEach(p=>{p.y-=p.sp;p.wo+=p.ws;p.x+=Math.sin(p.wo)*2;if(fr>80)p.op-=0.02;
+      if(p.op>0){alive=true;ctx.save();ctx.globalAlpha=Math.max(0,p.op);ctx.translate(p.x,p.y);ctx.rotate(Math.sin(p.wo)*0.3);ctx.font=`${p.sz}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(p.e,0,0);ctx.restore()}});
+    fr++;if(alive&&fr<160)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height);
+  }draw();
+}
+
+// WEATHER
+async function loadWeather(){
+  const el=document.getElementById('weather-content');
+  el.innerHTML='<div class="loading-text">Loading...</div>';
+  try{
+    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.5245&longitude=-90.5151&current=temperature_2m,weathercode,windspeed_10m,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&forecast_days=1&timezone=America/Chicago');
+    const d=await r.json();const c=d.current,dy=d.daily;
+    const t=Math.round(c.temperature_2m),hi=Math.round(dy.temperature_2m_max[0]),lo=Math.round(dy.temperature_2m_min[0]),rain=dy.precipitation_probability_max[0],wind=Math.round(c.windspeed_10m);
+    const icon=wIcon(c.weathercode),desc=wDesc(c.weathercode);
+    let tip='';
+    if(rain>50)tip='<div class="weather-tip">☔ Rain likely — a covered porch walk still counts!</div>';
+    else if(t>=60&&t<=80)tip='<div class="weather-tip">🦅 Lovely weather — great day to watch for eagles on your walk!</div>';
+    else if(t<32)tip='<div class="weather-tip">🧥 Bundle up! Bald eagles are often active in cold weather near the river.</div>';
+    else if(t>85)tip='<div class="weather-tip">☀️ Very warm — bring water and walk in the shade if you can.</div>';
+    el.innerHTML=`<div class="weather-main"><div class="weather-icon">${icon}</div><div><div class="weather-temp">${t}°F</div><div class="weather-desc">${desc}</div></div></div><div class="weather-grid"><div class="weather-pill">☀️ High ${hi}°F</div><div class="weather-pill">🌙 Low ${lo}°F</div><div class="weather-pill">🌧 Rain ${rain}%</div><div class="weather-pill">💨 Wind ${wind} mph</div></div>${tip}`;
+  }catch(e){el.innerHTML='<div class="loading-text">Couldn\'t load weather. Tap refresh!</div>'}
+}
+const wIcon=c=>c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=57?'🌦️':c<=67?'🌧️':c<=77?'❄️':c<=82?'🌦️':c<=86?'🌨️':'⛈️';
+const wDesc=c=>c===0?'Clear & sunny':c<=2?'Partly cloudy':c<=3?'Overcast':c<=48?'Foggy':c<=57?'Light drizzle':c<=67?'Rainy':c<=77?'Snowy':c<=82?'Showers':'Thunderstorms';
+
+// NEWS + EVENTS (combined)
+async function loadNewsAndEvents(){
+  const el=document.getElementById('news-events-content');
+  el.innerHTML='<div class="loading-text">Loading...</div>';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      model:'claude-sonnet-4-20250514',max_tokens:1500,tools:[{type:'web_search_20250305',name:'web_search'}],
+      messages:[{role:'user',content:`Search for three things and combine into one response:
+1. Top 3 local news stories from Quad Cities / Bettendorf / Davenport Iowa area this past week.
+2. Top 2 Iowa Hawkeyes news headlines (any sport) from past few weeks.
+3. Up to 4 upcoming community events in the Quad Cities area good for retirees — bingo, fairs, arts, barn tours, garden tours, fun outings.
+Return ONLY JSON (no markdown): {"local":[{"title":"...","summary":"...","date":"..."}],"hawks":[{"title":"...","summary":"...","date":"..."}],"events":[{"title":"...","date":"...","location":"...","description":"...","type":"bingo/fair/arts/barn/community"}]}`}]
+    })});
+    const data=await res.json();
+    const txt=data.content?.map(c=>c.type==='text'?c.text:'').join('')||'';
+    let p;try{const m=txt.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);p=JSON.parse(m?m[0]:txt)}catch(e){p=null}
+    const icons={bingo:'🎱',fair:'🎡',arts:'🎨',barn:'🏚',community:'🤝',garden:'🌷',music:'🎵'};
+    if(p){
+      let html='';
+      if(p.local?.length){html+='<div class="news-section-label">📍 Quad Cities Local News</div>';html+=p.local.map(n=>`<div class="news-item"><div class="news-title">${n.title}</div><div class="news-meta">${n.date||''}${n.summary?' — '+n.summary:''}</div></div>`).join('')}
+      if(p.hawks?.length){html+='<div class="news-section-label">🦅 Iowa Hawkeyes</div>';html+=p.hawks.map(n=>`<div class="news-item"><div class="news-title">${n.title}</div><div class="news-meta">${n.date||''}${n.summary?' — '+n.summary:''}</div></div>`).join('')}
+      if(p.events?.length){html+='<div class="news-section-label">🎪 Local Events &amp; Outings</div>';html+=p.events.map(e=>`<div class="news-item"><div class="news-title">${icons[e.type]||'📍'} ${e.title}</div><div class="news-meta">${e.date?e.date+' · ':''}${e.location||''}${e.description?' — '+e.description:''}</div></div>`).join('')}
+      el.innerHTML=html||'<div class="loading-text">Nothing found right now.</div>';
+    }else el.innerHTML='<div class="loading-text">Couldn\'t load. Tap refresh!</div>';
+  }catch(e){el.innerHTML='<div class="loading-text">Couldn\'t load. Tap refresh!</div>'}
+}
+
+// GAMES — basketball + football, skip if out of season
+async function loadGames(){
+  const el=document.getElementById('games-content');
+  el.innerHTML='<div class="loading-text">Loading...</div>';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      model:'claude-sonnet-4-20250514',max_tokens:900,tools:[{type:'web_search_20250305',name:'web_search'}],
+      messages:[{role:'user',content:`Today is ${new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}.
+
+Search for upcoming Iowa Hawkeyes games in these sports IF they are currently in season:
+- Women's basketball (season: Nov–April)
+- Men's basketball (season: Nov–April)  
+- Football (season: Aug–Jan)
+
+For each sport that IS in season, find the next upcoming game: date, opponent, home or away, TV channel.
+If a sport is NOT currently in season, do not include it at all — set it to null.
+
+Return ONLY JSON (no markdown):
+{
+  "womens_basketball": {"date":"...","opponent":"...","location":"home or away","tv":"..."} or null,
+  "mens_basketball": {"date":"...","opponent":"...","location":"home or away","tv":"..."} or null,
+  "football": {"date":"...","opponent":"...","location":"home or away","tv":"..."} or null
+}`}]
+    })});
+    const data=await res.json();
+    const txt=data.content?.map(c=>c.type==='text'?c.text:'').join('')||'';
+    let p;try{const m=txt.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);p=JSON.parse(m?m[0]:txt)}catch(e){p=null}
+    if(p){
+      let html='';
+      if(p.womens_basketball)html+=`<div class="game-card womens"><div class="game-label">🏀 Women's Basketball — Next Game</div><div class="game-teams">Iowa vs. ${p.womens_basketball.opponent}</div><div class="game-details"><span>📅 ${p.womens_basketball.date}</span><span>${p.womens_basketball.location==='home'?'🏠 Home':'✈️ Away'}</span></div>${p.womens_basketball.tv?`<span class="game-watch">📺 ${p.womens_basketball.tv}</span>`:''}</div>`;
+      if(p.mens_basketball)html+=`<div class="game-card mens"><div class="game-label">🏀 Men's Basketball — Next Game</div><div class="game-teams">Iowa vs. ${p.mens_basketball.opponent}</div><div class="game-details"><span>📅 ${p.mens_basketball.date}</span><span>${p.mens_basketball.location==='home'?'🏠 Home':'✈️ Away'}</span></div>${p.mens_basketball.tv?`<span class="game-watch">📺 ${p.mens_basketball.tv}</span>`:''}</div>`;
+      if(p.football)html+=`<div class="game-card" style="background:linear-gradient(135deg,#2a5a1a,#4a8a2a);"><div class="game-label" style="color:rgba(255,255,255,.6);">🏈 Football — Next Game</div><div class="game-teams" style="color:#fff;">Iowa vs. ${p.football.opponent}</div><div class="game-details" style="color:rgba(255,255,255,.75);"><span>📅 ${p.football.date}</span><span>${p.football.location==='home'?'🏠 Home':'✈️ Away'}</span></div>${p.football.tv?`<span class="game-watch" style="background:rgba(255,255,255,.15);color:#fff;">📺 ${p.football.tv}</span>`:''}</div>`;
+      el.innerHTML=html||'<div class="loading-text">No upcoming games found — check back when the season starts!</div>';
+    }else el.innerHTML='<div class="loading-text">Couldn\'t load schedule. Tap refresh!</div>';
+  }catch(e){el.innerHTML='<div class="loading-text">Couldn\'t load. Tap refresh!</div>'}
+}
+
+// BOOKS
+async function loadBooks(){
+  const el=document.getElementById('books-content');
+  el.innerHTML='<div class="loading-text">Searching...</div>';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      model:'claude-sonnet-4-20250514',max_tokens:900,tools:[{type:'web_search_20250305',name:'web_search'}],
+      messages:[{role:'user',content:`Search for new 2025 book releases by David Baldacci, James Patterson, Nora Roberts, Elin Hilderbrand, Lisa Scottoline. Return ONLY a JSON array (no markdown): [{"title":"...","author":"...","releaseDate":"...","description":"...","available":true}]. Up to 6 books.`}]
+    })});
+    const data=await res.json();
+    const txt=data.content?.map(c=>c.type==='text'?c.text:'').join('')||'';
+    let books;try{const m=txt.replace(/```json|```/g,'').match(/\[[\s\S]*\]/);books=JSON.parse(m?m[0]:txt)}catch(e){books=null}
+    if(books?.length){
+      el.innerHTML=books.map(b=>`<div class="book-item"><div style="font-size:1.4rem;flex-shrink:0;margin-top:2px;">📖</div><div><div style="font-size:.87rem;font-weight:500;margin-bottom:3px;color:var(--text);">${b.title}</div><div style="margin-bottom:2px;"><span class="tag t-river">${b.author}</span>${b.available?'<span class="tag t-sage">Available Now</span>':'<span class="tag t-blush">Coming Soon</span>'}</div>${b.releaseDate?`<div style="font-size:.7rem;color:var(--text-light);">📅 ${b.releaseDate}</div>`:''}${b.description?`<div style="font-size:.76rem;color:var(--text-light);font-style:italic;margin-top:3px;">${b.description}</div>`:''}</div></div>`).join('');
+    }else el.innerHTML='<div class="loading-text">Couldn\'t find books. Tap refresh!</div>';
+  }catch(e){el.innerHTML='<div class="loading-text">Couldn\'t load. Tap refresh!</div>'}
+}
+
+// WALK TRACKER
+function renderWalks(){
+  const s=getState(),walks=s.walks||{},days=getWeekDays(),today=todayKey();
+  const rows=document.getElementById('walk-rows');
+  rows.innerHTML='';
+  let count=0,totalMin=0;
+
+  days.forEach((dk,i)=>{
+    const walked=!!walks[dk],dur=walks[dk+'_dur']||'';
+    if(walked){count++;if(dur)totalMin+=parseFloat(dur)||0;}
+    const isToday=dk===today;
+
+    const row=document.createElement('div');
+    row.className='walk-row'+(walked?' walked':'')+(isToday?' is-today':'');
+
+    // Check button
+    const cb=document.createElement('button');
+    cb.className='walk-check';
+    cb.innerHTML=walked?'🦋':'○';
+    cb.onclick=()=>toggleWalk(dk);
+
+    // Label
+    const lbl=document.createElement('div');
+    lbl.className='walk-day-name';
+    lbl.innerHTML=DAY_FULL[i]+(isToday?'<span class="today-tag">← today</span>':'');
+
+    // Duration input
+    const dw=document.createElement('div');
+    dw.className='dur-wrap';
+    const inp=document.createElement('input');
+    inp.type='number';inp.className='dur-input';
+    inp.placeholder='min';inp.min=1;inp.max=300;inp.value=dur;
+    inp.setAttribute('aria-label','Walk duration in minutes');
+    inp.onchange=e=>{const st=getState();const w=st.walks||{};w[dk+'_dur']=e.target.value;setState({walks:w});renderWalks()};
+    const un=document.createElement('span');
+    un.className='dur-unit';un.textContent='min';
+    dw.appendChild(inp);dw.appendChild(un);
+
+    row.appendChild(cb);row.appendChild(lbl);row.appendChild(dw);
+    rows.appendChild(row);
+  });
+
+  // Ring update
+  const circ=170,pct=count/4;
+  document.getElementById('walk-ring').style.strokeDashoffset=circ-(pct*circ);
+  document.getElementById('walk-ring-label').textContent=`${count}/4`;
+  const heads=['Let\'s go! 🌿','Great start! 💙','You\'re doing wonderfully! 🦅','Almost there — one more! 🦅','🎉 Weekly goal reached!'];
+  document.getElementById('walk-headline').textContent=heads[Math.min(count,4)];
+  const rem=Math.max(0,4-count);
+  document.getElementById('walk-remain').textContent=count>=4?`~${Math.round(totalMin)} min walked this week 🦋`:`${rem} more walk${rem!==1?'s':''} to reach your goal`;
+  document.getElementById('walk-note').textContent=totalMin>0?`🦅 About ${Math.round(totalMin)} minutes of walking logged this week — wonderful!`:'Tap a day to log a walk, then enter how long you went!';
+}
+
+function toggleWalk(dk){
+  const s=getState(),walks=s.walks||{};
+  const was=!!walks[dk];walks[dk]=!was;setState({walks});
+  renderWalks();
+  if(!was){launchButterflies();toast('Walk logged! Beautiful work 🦋')}
+}
+
+// MOOD
+const MOODS=[{e:'😊',l:'Great'},{e:'🙂',l:'Good'},{e:'😐',l:'Okay'},{e:'😔',l:'Low'},{e:'😴',l:'Tired'}];
+let selectedMood=null;
+
+function renderMoodGrid(){
+  const container=document.getElementById('mood-grid');
+  const today=(getState().journal||{})[todayKey()];
+  container.innerHTML='';
+  MOODS.forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='mood-btn'+(today?.mood===m.e?' selected':'');
+    btn.innerHTML=`${m.e}<span class="mood-lbl">${m.l}</span>`;
+    btn.onclick=()=>{selectedMood=m.e;document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected')};
+    container.appendChild(btn);
+  });
+  if(today?.mood)selectedMood=today.mood;
+}
+
+function updateSleep(slider){
+  const v=parseFloat(slider.value),pct=((v-2)/10)*100;
+  slider.style.setProperty('--pct',pct+'%');
+  document.getElementById('sleep-val').textContent=v+'h';
+}
+
+function saveEntry(){
+  const s=getState(),journal=s.journal||{},today=todayKey();
+  const sleep=parseFloat(document.getElementById('sleep-slider').value);
+  const note=document.getElementById('jnote').value.trim();
+  journal[today]={date:today,mood:selectedMood,sleep,note,saved:new Date().toISOString()};
+  setState({journal});renderEntries();
+  document.getElementById('jnote').value='';
+  toast('Entry saved! 💙');
+}
+
+function renderEntries(){
+  const s=getState(),journal=s.journal||{};
+  const keys=Object.keys(journal).sort().reverse().slice(0,10);
+  const el=document.getElementById('entries-list');
+  if(!keys.length){el.innerHTML='<div class="loading-text">No entries yet — start today! 💛</div>';return}
+  el.innerHTML=keys.map(k=>{
+    const e=journal[k];
+    const d=new Date(k+'T12:00:00');
+    const lbl=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+    return `<div class="entry-item"><div class="entry-date">${lbl}</div><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center;">${e.mood?`<span style="font-size:1.15rem;">${e.mood}</span>`:''} ${e.sleep?`<span class="tag t-river">🌙 ${e.sleep}h</span>`:''}</div>${e.note?`<div style="font-size:.77rem;color:var(--text-light);font-style:italic;margin-top:3px;">"${e.note}"</div>`:''}</div>`;
+  }).join('');
+}
+
+// AI INSIGHTS
+async function getInsights(){
+  const btn=document.getElementById('insights-btn'),box=document.getElementById('insights-box');
+  btn.disabled=true;btn.textContent='🦅 Looking at your week...';
+  box.style.display='block';box.className='insights-box loading';
+  box.innerHTML='Soaring through your data like an eagle... 🦅';
+
+  const s=getState(),journal=s.journal||{},walks=s.walks||{};
+  const days=getWeekDays(),today=todayKey();
+  const walkCount=days.filter(d=>walks[d]).length;
+  const walkDetails=days.map((d,i)=>{
+    if(!walks[d])return null;
+    const dur=walks[d+'_dur']||null;
+    return `${DAY_FULL[i]}${dur?' ('+dur+' min)':''}`;
+  }).filter(Boolean).join(', ')||'none this week';
+
+  const entries=Object.values(journal).sort((a,b)=>b.date>a.date?1:-1).slice(0,14);
+  const summary=entries.map(e=>`${e.date}: mood=${e.mood||'?'}, sleep=${e.sleep||'?'}h${e.note?', note="'+e.note+'"':''}`).join('\n')||'No entries yet';
+
+  const prompt=`You are a warm, caring wellness companion for an elderly woman working on heart health through walking regularly. Here is her recent wellness data:
+
+WALKS THIS WEEK: ${walkCount} out of 4 goal
+Days walked: ${walkDetails}
+
+RECENT MOOD / SLEEP / NOTES (last 14 days):
+${summary}
+
+Write a warm, personal wellness insight response with these THREE labeled sections:
+
+1. WALKING & ACTIVITY
+Look for patterns between walk frequency/duration and mood. Be specific where possible (e.g. "Your longer walks seemed to match your better moods"). If little data, be encouraging.
+
+2. SLEEP & ENERGY
+Note patterns between sleep hours and mood/energy. Mention that 7-9 hours is ideal for heart health.
+
+3. TIPS FOR THIS WEEK
+Give 3 gentle, specific suggestions. ALWAYS include:
+- A tip about getting outside for natural daylight (even 15 minutes boosts mood and helps sleep)
+- A simple nutrition tip (staying hydrated, colorful fruits/veggies, reducing heavy meals before bed)
+- One tip tailored to her specific patterns from the data above
+
+Keep each section 2-3 sentences. Use a warm, encouraging tone — like a caring friend. End with a short cheerful sign-off that mentions eagles or butterflies.`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();
+    const text=data.content?.map(c=>c.text||'').join('')||'Couldn\'t load insights right now.';
+    // Try to format into sections
+    const parts=text.split(/\n(?=\d\.|\*\*\d|WALKING|SLEEP|TIPS)/i).filter(s=>s.trim());
+    box.className='insights-box';
+    if(parts.length>1){
+      box.innerHTML=parts.map(sec=>{
+        const lines=sec.trim().split('\n');
+        const rawHead=lines[0].replace(/^\d+\.\s*/,'').replace(/\*\*/g,'').replace(/:$/,'');
+        const body=lines.slice(1).join(' ').trim();
+        return `<div class="insight-section"><div class="insight-lbl">${rawHead}</div><div>${body||lines[0]}</div></div>`;
+      }).join('');
+    }else{
+      box.innerHTML=`<div>${text.replace(/\n\n/g,'</div><div style="margin-top:10px;">').replace(/\n/g,'<br>')}</div>`;
+    }
+  }catch(e){
+    box.className='insights-box';
+    box.innerHTML='🦅 Couldn\'t connect right now — try again in a moment!';
+  }
+  btn.disabled=false;btn.innerHTML='🦅 Refresh My Insights';
+}
+
+// INIT
+function init(){
+  initDate();
+  loadWeather();
+  loadNewsAndEvents();
+  loadGames();
+  loadBooks();
+  renderWalks();
+  renderMoodGrid();
+  const s=getState(),today=(s.journal||{})[todayKey()];
+  const slider=document.getElementById('sleep-slider');
+  if(today?.sleep)slider.value=today.sleep;
+  updateSleep(slider);
+}
+window.addEventListener('load',init);
+</script>
+</body>
+</html>
